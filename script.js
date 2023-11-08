@@ -169,3 +169,20 @@ const movementsDescriptions = movements.map(
 );
 console.log(movementsDescriptions);
 // [ "Movement 1: You deposited 200", "Movement 2: You deposited 450", "Movement 3: You withdrew 400", "Movement 4: You deposited 3000", "Movement 5: You withdrew 650", "Movement 6: You withdrew 130", "Movement 7: You deposited 70", "Movement 8: You deposited 1300" ]
+
+console.log("----- The filter Method -----");
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+const deposits = movements.filter(function (mov, i, arr) {
+  return mov > 0;
+});
+console.log(movements); // [ 200, 450, -400, 3000, -650, -130, 70, 1300 ]
+console.log(deposits); // [ 200, 450, 3000, 70, 1300 ]
+
+// using for of loop
+const depositsFor = [];
+for (const mov of movements) if (mov > 0) depositsFor.push(mov);
+console.log(depositsFor);
+
+const withdrawals = movements.filter((mov) => mov < 0);
+console.log(withdrawals); // [ -400, -650, -130 ]
