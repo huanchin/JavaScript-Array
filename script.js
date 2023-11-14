@@ -292,3 +292,29 @@ const calcAverageHumanAge = (dogs) => {
 
 console.log(calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3])); // 44
 console.log(calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4])); // 47.333333
+
+console.log("-------- The find Method --------");
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+// some and every
+console.log(movements);
+
+// EQUALITY
+console.log(movements.includes(-130)); // true
+
+// SOME: CONDITION
+console.log(movements.some((mov) => mov === -130)); // true
+
+const anyDeposits = movements.some((mov) => mov > 0);
+console.log(anyDeposits); // true
+
+// EVERY
+console.log(movements.every((mov) => mov > 0)); // false
+console.log(account4.movements.every((mov) => mov > 0)); // true
+
+// Separate callback
+const deposit = (mov) => mov > 0;
+console.log(movements.some(deposit));
+console.log(movements.every(deposit));
+console.log(movements.filter(deposit));
