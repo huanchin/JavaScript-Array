@@ -293,7 +293,7 @@ const calcAverageHumanAge = (dogs) => {
 console.log(calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3])); // 44
 console.log(calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4])); // 47.333333
 
-console.log("-------- The find Method --------");
+console.log("-------- The some & every Method --------");
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
@@ -318,3 +318,25 @@ const deposit = (mov) => mov > 0;
 console.log(movements.some(deposit));
 console.log(movements.every(deposit));
 console.log(movements.filter(deposit));
+
+console.log("-------- flat and flatMap --------");
+// flat and flatMap
+const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
+console.log(arr.flat()); // [ 1, 2, 3, 4, 5, 6, 7, 8 ]
+
+const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8];
+console.log(arrDeep.flat(1)); // [[1, 2], 3, 4, [5, 6], 7, 8]
+console.log(arrDeep.flat(2)); // // [ 1, 2, 3, 4, 5, 6, 7, 8 ]
+
+// flat
+const overalBalance = accounts
+  .map((acc) => acc.movements) // [[200, 450, -400, 3000, -650, -130, 70, 1300], [5000, 3400, -150, -790, -3210, -1000, 8500, -30], [200, -200, 340, -300, -20, 50, 400, -460], [430, 1000, 700, 50, 90]]
+  .flat() // [ 200, 450, -400, 3000, -650, -130, 70, 1300, 5000, 3400, -150, -790, -3210, -1000, 8500, -30, 200, -200, 340, -300, -20, 50, 400, -460, 430, 1000, 700, 50, 90]
+  .reduce((acc, mov) => acc + mov, 0); // 17840
+console.log(overalBalance); // 17840
+
+// flatMap
+const overalBalance2 = accounts
+  .flatMap((acc) => acc.movements)
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(overalBalance2); // 17840
